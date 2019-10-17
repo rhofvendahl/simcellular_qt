@@ -17,6 +17,7 @@ public:
     int row; // commented out in original - vestigial?
     int column; // commented out in original - vestigial?
     Color color;
+    Color nextColor;
     QList<Cell> neighbors;
     QList<Cell> getLiveNeighbors();
 };

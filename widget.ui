@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;
+color: #808080;</string>
+  </property>
  </widget>
  <resources/>
  <connections/>
