@@ -1,6 +1,6 @@
 #include "library.h"
 
-library::library()
+Library::Library()
 {
 
 }

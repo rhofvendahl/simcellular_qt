@@ -3,14 +3,24 @@
 
 #include <QColor>
 
+
 class Color
 {
 public:
-    Color();
-    static const QColor red;
-    static const QColor green;
-    static const QColor blue;
-    static const QColor yellow;
+    static Color getAverage(QList<Color> colors);
+    static Color getRed();
+    static Color getGreen();
+    static Color getBlue();
+    static Color getYellow();
+    static Color getRandom();
+
+    Color(int red, int green, int blue);
+    QColor getQColor();
+
+private:
+    int redValue;
+    int greenValue;
+    int blueValue;
 };
 
 #endif // COLOR_H

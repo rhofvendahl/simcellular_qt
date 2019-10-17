@@ -2,10 +2,10 @@
 #define LIBRARY_H
 
 
-class library
+class Library
 {
 public:
-    library();
+    Library();
 };
 
 #endif // LIBRARY_H
