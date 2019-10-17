@@ -8,6 +8,9 @@
 class Cell
 {
 public:
+    static bool areSame(Cell cell1, Cell cell2);
+    static Color getAverageColor(QList<Cell> cells);
+
     Cell(int rowParam, int columnParam);
     bool state;
     bool nextState;
@@ -15,6 +18,7 @@ public:
     int column; // commented out in original - vestigial?
     Color color;
     QList<Cell> neighbors;
+    QList<Cell> getLiveNeighbors();
 };
 
 #endif // CELL_H

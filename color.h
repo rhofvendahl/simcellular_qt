@@ -7,17 +7,17 @@
 class Color
 {
 public:
-    static Color getAverage(QList<Color> colors);
     static Color getRed();
     static Color getGreen();
     static Color getBlue();
     static Color getYellow();
+    static Color getWhite();
     static Color getRandom();
-
+\
+    Color();
     Color(int red, int green, int blue);
     QColor getQColor();
 
-private:
     int redValue;
     int greenValue;
     int blueValue;

@@ -7,18 +7,16 @@
 class Game
 {
 public:
-    Game();
+    Game(int rows, int columns);
     QList<QList<Cell>> board;
     void update();
-    void insert(Cell insertCell, QList<QList<bool>> shape, QColor color);
+    void insert(Cell insertCell, QList<QList<bool>> shape, Color color);
     void clear();
     void random(); // originally passed in list of colors
 
 private:
     Cell inRangeCell(int  row, int column);
-    QList<Cell> getNeighbors(cell Cell);
-    QColor averageColor(QList<Cell> cells);
-
+    QList<Cell> getNeighbors(Cell cell);
 };
 
 #endif // GAME_H

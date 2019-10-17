@@ -1,8 +1,14 @@
 #include "color.h"
 
 #include <QColor>
-#include <QtMath>
-//#include <QRandomGenerator>
+#include <QRandomGenerator>
+
+Color::Color() {
+    Color cheatSheet = getWhite();
+    redValue = cheatSheet.redValue;
+    greenValue = cheatSheet.greenValue;
+    blueValue = cheatSheet.blueValue;
+}
 
 Color::Color(int red, int green, int blue)
 {
@@ -11,40 +17,38 @@ Color::Color(int red, int green, int blue)
     blueValue = blue;
 }
 
-static Color getRed() {
+Color Color::getRed() {
     return Color(255, 91, 71);
 }
 
-static Color getGreen() {
+Color Color::getGreen() {
     return Color(50, 205, 50);
 }
 
-static Color getBlue() {
+Color Color::getBlue() {
     return Color(0, 191, 255);
 }
 
-static Color getYellow() {
+Color Color::getYellow() {
     return Color(245, 227, 68);
 }
 
-static Color getAverage(QList<Color> colors) {
-    int rSum = 0, gSum = 0, bSum = 0;
-    for (int  i = 0; i < colors.size(); i++) {
-        rSum += static_cast<int>(qPow(colors.at(i).redValue, 2));
-        gSum += static_cast<int>(qPow(colors.at(i).blueValue, 2));
-        bSum += static_cast<int>(qPow(colors.at(i).greenValue, 2));
-    }
-
-    int rAvg, gAvg, bAvg;
-    rAvg = static_cast<int>(qSqrt(rSum / static_cast<double>(colors.size())));
-    gAvg = static_cast<int>(qSqrt(gSum / static_cast<double>(colors.size())));
-    bAvg = static_cast<int>(qSqrt(bSum / static_cast<double>(colors.size())));
-
-    return Color(rAvg, gAvg, bAvg);
+Color Color::getWhite() {
+    return Color(255, 255, 255);
 }
 
-static Color getRandom(){
-    return Color(255, 91, 71);
+Color Color::getRandom(){
+    QRandomGenerator rand;
+    switch (rand.bounded(0, 3)) {
+    case 0:
+        return getRed();
+    case 1:
+        return getGreen();
+    case 2:
+        return getBlue();
+    default:
+        return getYellow();
+    }
 }
 
 QColor Color::getQColor() {
