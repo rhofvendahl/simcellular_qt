@@ -10,9 +10,9 @@ public:
     Game(int rows, int columns);
     QList<QList<Cell>> board;
     void update();
-    void insert(Cell insertCell, QList<QList<bool>> shape, Color color);
+    void insertShape(Cell insertCell, QList<QList<bool>> shape, Color color);
     void clear();
-    void random(); // originally passed in list of colors
+    void fillRandom();
 
 private:
     Cell inRangeCell(int  row, int column);
