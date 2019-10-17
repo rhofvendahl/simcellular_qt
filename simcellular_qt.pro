@@ -16,10 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cell.cpp \
+    color.cpp \
+    game.cpp \
+    library.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
+    cell.h \
+    color.h \
+    game.h \
+    library.h \
     widget.h
 
 FORMS += \
