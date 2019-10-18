@@ -38,8 +38,7 @@ Color Color::getWhite() {
 }
 
 Color Color::getRandom(){
-    QRandomGenerator rand;
-    switch (rand.bounded(0, 3)) {
+    switch (QRandomGenerator::global()->bounded(0, 3)) {
     case 0:
         return getRed();
     case 1:

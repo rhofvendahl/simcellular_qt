@@ -6,7 +6,6 @@
 Cell::Cell(int rowParam, int columnParam)
 {
     state = false;
-    nextState = false;
     row = rowParam; // not in original
     column = columnParam; // not in original
 }

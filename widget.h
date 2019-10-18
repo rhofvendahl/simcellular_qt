@@ -1,6 +1,9 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+#include "game.h"
+#include "library.h"
+
 #include <QtWidgets/QWidget>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -32,32 +35,16 @@ private slots:
 
     void on_clear_pressed();
 
+    void on_random_pressed();
+
 private:
     Ui::Widget *ui;
 
-//    QLabel *title;
+    const int boardRows = 200;
+    const int boardColumns = 200;
+    Game game = Game(boardRows, boardColumns);
+    Library library;
 
-//    QFrame *sidebar;
-    QFrame *shape0;
-    QFrame *shape1;
-    QFrame *shape2;
-    QFrame *shape3;
-    QFrame *shape4;
-    QFrame *shape5;
-    QFrame *shape6;
-    QFrame *colors;
-
-//    QFrame *board;
-
-//    QFrame *controls;
-    QToolButton *stepForward;
-    QToolButton *pause;
-    QToolButton *play;
-    QToolButton *fastForward;
-    QToolButton *clear;
-    QToolButton *random;
-
-//    QLabel *about;
-
+    void render();
 };
 #endif // WIDGET_H
