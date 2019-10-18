@@ -1,0 +1,22 @@
+QWidget {
+    background-color: white;
+    color: #808080;
+}
+
+QToolButton {
+    border: none;
+    icon-size: 45px, 45px;
+    margin-right: 15px;
+}
+
+QFrame#sidebar {
+    border: none;
+}
+
+QFrame#controls {
+    border: none;
+}
+
+QLabel#title {
+    text-align: right;
+}

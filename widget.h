@@ -21,12 +21,23 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+private slots:
+    void on_step_forward_pressed();
+
+    void on_pause_pressed();
+
+    void on_play_pressed();
+
+    void on_fast_forward_pressed();
+
+    void on_clear_pressed();
+
 private:
     Ui::Widget *ui;
 
-    QLabel *title;
+//    QLabel *title;
 
-    QFrame *sidebar;
+//    QFrame *sidebar;
     QFrame *shape0;
     QFrame *shape1;
     QFrame *shape2;
@@ -36,9 +47,9 @@ private:
     QFrame *shape6;
     QFrame *colors;
 
-    QFrame *board;
+//    QFrame *board;
 
-    QFrame *controls;
+//    QFrame *controls;
     QToolButton *stepForward;
     QToolButton *pause;
     QToolButton *play;
@@ -46,7 +57,7 @@ private:
     QToolButton *clear;
     QToolButton *random;
 
-    QLabel *about;
+//    QLabel *about;
 
 };
 #endif // WIDGET_H
