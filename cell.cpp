@@ -49,18 +49,6 @@ Color *Cell::getAverageColor(QList<Cell*> liveNeighbors) {
 void Cell::determineNext()  {
     QList<Cell*> liveNeighbors = getLiveNeighbors();
     int tally = liveNeighbors.size();
-//    for (int i = 0; i < liveNeighbors.size(); i++) {
-//        qDebug() << "neighbor" << i << "(" << liveNeighbors[i]->row << liveNeighbors[i]->column << "):" << liveNeighbors[i]->state << liveNeighbors[i]->color->redValue << liveNeighbors[i]->color->greenValue << liveNeighbors[i]->color->blueValue;
-//    }
-
-//    bool shouldSurvive = (tally == 2 || tally == 3); // temp
-//    bool shouldGenerate = (tally == 3); // temp
-//    if (state || shouldGenerate) {
-//        qDebug() << "(CELL" << row << column << ")" << tally << "live neighbors &" << state << ":";
-//        if (state && shouldSurvive) qDebug() << "surviving";
-//        else if (!state && shouldGenerate) qDebug() << "regenerating";
-//        else qDebug() << "dying";
-//    }
 
     if  (state) {
         bool shouldSurvive = (tally == 2 || tally == 3); // temp
@@ -70,13 +58,11 @@ void Cell::determineNext()  {
         Color *color;
         if (shouldGenerate) {
             if  (QRandomGenerator::global()->bounded(0, 9) < 8) {
-                qDebug() << "copying";
                 for (int i = 0; i < liveNeighbors.size(); i++) {
                     qDebug() << "neighbor" << i << "of" << tally << "(" << liveNeighbors[i]->row << liveNeighbors[i]->column << "):" << liveNeighbors[i]->state << liveNeighbors[i]->color->redValue << liveNeighbors[i]->color->greenValue << liveNeighbors[i]->color->blueValue;
                 }
                 color = liveNeighbors[QRandomGenerator::global()->bounded(0, liveNeighbors.size() - 1)]->color;
             } else {
-                qDebug() << "inheriting";
                 for (int i = 0; i < liveNeighbors.size(); i++) {
                     qDebug() << "neighbor" << i << "of" << tally << "(" << liveNeighbors[i]->row << liveNeighbors[i]->column << "):" << liveNeighbors[i]->state << liveNeighbors[i]->color->redValue << liveNeighbors[i]->color->greenValue << liveNeighbors[i]->color->blueValue;
                 }
@@ -87,11 +73,6 @@ void Cell::determineNext()  {
             setNext(false);
         }
     }
-
-//    if (state || shouldGenerate) {
-//        qDebug() << "color:" << color->redValue << color->greenValue << color->blueValue;
-//        qDebug() << "nextColor:" << nextColor->redValue << nextColor->greenValue << nextColor->blueValue;
-//    }
 }
 
 void Cell::transition() {

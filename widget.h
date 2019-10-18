@@ -37,7 +37,7 @@ private slots:
 
     void on_random_pressed();
 
-    void on_board_cellPressed(int row, int column);
+    void on_board_cellEntered(int row, int column);
 
 private:
     Ui::Widget *ui;

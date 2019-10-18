@@ -56,6 +56,9 @@ Widget::Widget(QWidget *parent)
     ui->board->setColumnCount(boardColumns);
     ui->board->horizontalHeader()->hide();
     ui->board->verticalHeader()->hide();
+    ui->board->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->board->setFocusPolicy(Qt::NoFocus);
+    ui->board->setSelectionMode(QAbstractItemView::NoSelection);
     for (int row = 0; row < ui->board->rowCount(); row++) {
         for (int column = 0; column < ui->board->columnCount(); column++) {
             QTableWidgetItem *item = new QTableWidgetItem();
@@ -158,18 +161,16 @@ void Widget::on_random_pressed()
     render();
 }
 
-void Widget::on_board_cellPressed(int row, int column)
+void Widget::on_board_cellEntered(int row, int column)
 {
-    Cell *cell = game->board[row][column];
-
-//    if (cell->state) {
-//        qDebug() << "about to set false";
-//        cell->set(false);
-//    } else {
-//        qDebug() << "about to set true";
-//        cell->set(true, Color::blue);
-//    }
-    qDebug() << "state nextState";// (just switched)";
-    qDebug() << cell->state << cell->nextState;
-    render();
+    if (QApplication::mouseButtons() == Qt::LeftButton) {
+        Cell *cell = game->board[row][column];
+        if (cell->state) {
+            cell->setNext(false);
+        } else {
+            cell->setNext(true, Color::green);
+        }
+        cell->transition();
+        render();
+    }
 }
