@@ -37,12 +37,14 @@ private slots:
 
     void on_random_pressed();
 
+    void on_board_cellPressed(int row, int column);
+
 private:
     Ui::Widget *ui;
 
     const int boardRows = 200;
     const int boardColumns = 200;
-    Game game = Game(boardRows, boardColumns);
+    Game *game;
     Library library;
 
     void render();

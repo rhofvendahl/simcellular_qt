@@ -21,9 +21,9 @@ public:
     QList<Cell*> getLiveNeighbors();
     void determineNext();
     void transition();
-    void set(bool state, Color *color=nullptr);
-    void setRandom();
-    void inheritColor(QList<Cell*> liveNeighbors);
+    void setNext(bool state, Color *colorParameter=nullptr);
+    void setNextRandom();
+    Color  *getAverageColor(QList<Cell*> liveNeighbors);
 
 };
 

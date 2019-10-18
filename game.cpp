@@ -43,11 +43,12 @@ QList<Cell*> Game::getNeighbors(Cell *cell)
     return neighbors;
 }
 
-void Game::update()
+void Game::transition()
 {
     for (int row = 0; row < board.size(); row++) {
         for (int column = 0; column < board[0].size(); column++) {
             board[row][column]->determineNext();
+//            qDebug() << "determineNext" << row << column << board[row][column];
         }
     }
 
@@ -63,9 +64,8 @@ void Game::insert(Cell *insertCell, QList<QList<bool>> shape, Color *color)
     for (int shapeRow = 0; shapeRow < shape.size(); shapeRow++) {
         for (int shapeColumn = 0; shapeColumn < shape[0].size(); shapeColumn++) {
             Cell *cell = inRangeCell(insertCell->row + shapeRow, insertCell->column + shapeColumn);
-            cell->state = shape[shapeRow][shapeColumn];
-            cell->color = color;
-            cell->set(shape[shapeRow][shapeColumn], color);
+            cell->setNext(shape[shapeRow][shapeColumn], color);
+            cell->transition();
         }
     }
 }
@@ -74,7 +74,10 @@ void Game::clear()
 {
     for (int row = 0; row < board.size(); row++) {
         for (int column = 0; column < board[0].size(); column++) {
-            board[row][column]->set(false);
+            Cell *cell = board[row][column];
+            cell->setNext(false);
+            cell->transition();
+
         }
     }
 }
@@ -83,7 +86,9 @@ void Game::random()
 {
     for (int row = 0; row < board.size(); row++) {
         for (int column = 0; column < board[0].size(); column++) {
-
+            Cell *cell = board[row][column];
+            cell->setNextRandom();
+            cell->transition();
         }
     }
 }

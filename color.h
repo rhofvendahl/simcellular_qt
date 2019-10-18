@@ -1,3 +1,5 @@
+// consider replacing this class with QColor (which apparently has individually set-able rgb values)
+
 #ifndef COLOR_H
 #define COLOR_H
 
@@ -7,15 +9,21 @@
 class Color
 {
 public:
-    static Color getRed();
-//    static Color getGreen();
-//    static Color getBlue();
-//    static Color getYellow();
-//    static Color getWhite();
-//    static Color getRandom();
+    static Color *red;
+    static Color *green;
+    static Color *blue;
+    static Color *yellow;
+    static Color *white;
+
+    static Color *getRed();
+    static Color *getGreen();
+    static Color *getBlue();
+    static Color *getYellow();
+    static Color *getWhite();
+    static Color *getRandom();
 \
     Color();
-    Color(int red, int green, int blue);
+    Color(int redParameter, int greenParameter, int blueParameter);
     QColor qColor();
 
     int redValue;
@@ -30,13 +38,6 @@ public:
     void setRandom();
 
     void copy(Color *color);
-
-private:
-    static Color *red;
-    static Color *green;
-    static Color *blue;
-    static Color *yellow;
-    static Color *white;
 };
 
 #endif // COLOR_H

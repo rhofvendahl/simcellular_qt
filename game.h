@@ -9,7 +9,7 @@ class Game
 public:
     Game(int rows, int columns);
     QList<QList<Cell*>> board;
-    void update();
+    void transition();
     void insert(Cell *insertCell, QList<QList<bool>> shape, Color *color);
     void clear();
     void random();
