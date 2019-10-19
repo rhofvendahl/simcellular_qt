@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>747</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,25 +37,25 @@
        <widget class="QTableWidget" name="shape0"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape1"/>
+       <widget class="QTableWidget" name="shape1"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape2"/>
+       <widget class="QTableWidget" name="shape2"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape3"/>
+       <widget class="QTableWidget" name="shape3"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape4"/>
+       <widget class="QTableWidget" name="shape4"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape5"/>
+       <widget class="QTableWidget" name="shape5"/>
       </item>
       <item>
-       <widget class="QTableView" name="shape6"/>
+       <widget class="QTableWidget" name="shape6"/>
       </item>
       <item>
-       <widget class="QTableView" name="colors"/>
+       <widget class="QTableWidget" name="colors"/>
       </item>
      </layout>
     </widget>

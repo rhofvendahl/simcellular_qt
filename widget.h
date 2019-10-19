@@ -3,14 +3,15 @@
 
 #include "game.h"
 #include "library.h"
+#include "color.h"
 
 #include <QtWidgets/QWidget>
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QLayout>
 #include <QLabel>
 #include <QToolButton>
 #include <QFrame>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -26,27 +27,41 @@ public:
 
 private slots:
     void on_step_forward_pressed();
-
     void on_pause_pressed();
-
     void on_play_pressed();
-
     void on_fast_forward_pressed();
-
     void on_clear_pressed();
-
     void on_random_pressed();
-
     void on_board_cellEntered(int row, int column);
+    void transitionHandler();
+    void on_colors_cellPressed(int row, int column);
+    void on_board_cellPressed(int row, int column);
+    void on_shape0_pressed(const QModelIndex &index);
+    void on_shape1_pressed(const QModelIndex &index);
+    void on_shape2_pressed(const QModelIndex &index);
+    void on_shape3_pressed(const QModelIndex &index);
+    void on_shape4_pressed(const QModelIndex &index);
+    void on_shape5_pressed(const QModelIndex &index);
+    void on_shape6_pressed(const QModelIndex &index);
 
 private:
     Ui::Widget *ui;
 
-    const int boardRows = 200;
-    const int boardColumns = 200;
+    const int boardRows = 30;
+    const int boardColumns = 30;
     Game *game;
-    Library library;
+    Library *library;
 
     void render();
+
+    QTimer *transitionTimer;
+    const int playInterval = 150;
+    const int fastForwardInterval = 50;
+
+    Color *selectedColor;
+    int selectedShape;
+
+    void deSelectShapes();
+
 };
 #endif // WIDGET_H

@@ -6,7 +6,19 @@ QWidget {
 QToolButton {
     border: none;
     icon-size: 45px, 45px;
-    margin-right: 15px;
+    margin-right: 20px;
+}
+
+QToolButton#pause {
+    icon-size: 40px, 40px;
+}
+
+QToolButton#clear {
+    icon-size: 40px, 40px;
+}
+
+QToolButton#random {
+    icon-size: 50px, 50px;
 }
 
 QFrame#sidebar {
