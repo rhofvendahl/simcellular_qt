@@ -404,13 +404,16 @@ Widget::Widget(QWidget *parent)
     QFile file("stylesheet.qss");
     file.open(QIODevice::ReadOnly);
     QString stylesheet = QLatin1String(file.readAll());
-    qDebug() << stylesheet;
     this->setStyleSheet(stylesheet);
 
     int id = QFontDatabase::addApplicationFont("open_sans_condensed_light.ttf");
     QString openSansCondensed = QFontDatabase::applicationFontFamilies(id).at(0);
 
     game = new Game(boardRows, boardColumns);
+    library = new Library();
+
+        transitionTimer = new QTimer(this);
+        connect(transitionTimer, SIGNAL(timeout()), this, SLOT(transitionHandler()));
 
     // title
     QFont titleFont = QFont(openSansCondensed);
@@ -431,6 +434,45 @@ Widget::Widget(QWidget *parent)
         ui->shape6->setFixedSize(69, 69);
         const QModelIndex index; // not actually used, so ok blank
         on_shape0_pressed(index);
+        on_shape1_pressed(index);
+        qDebug() << library->toad;
+//        for (int i = 0; i < library->shapes.size(); i++) {
+//            QList<QList<bool>> shape = library->shapes[i];
+//            for (int row = 0; row < ui->board->rowCount(); row++) {
+//               for (int column = 0; column < ui->board->columnCount(); column++) {
+//                   QTableWidgetItem *item = new QTableWidgetItem();
+////                   if (shape[row][column]) {
+////                       item->setBackgroundColor(selectedColor->qColor());
+////                   } else {
+////                       item->setBackgroundColor(Color::white->qColor());
+////                   }
+//////                   switch (i) {
+//////                   // could set items everywhere then just do this for setbackgroundcolor (later)
+//////                   case 0:
+//////                       ui->shape0->setItem(row, column, item);
+//////                       break;
+//////                   case 1:
+//////                       ui->shape1->setItem(row, column, item);
+//////                       break;
+//////                   case 2:
+//////                       ui->shape2->setItem(row, column, item);
+//////                       break;
+//////                   case 3:
+//////                       ui->shape3->setItem(row, column, item);
+//////                       break;
+//////                   case 4:
+//////                       ui->shape4->setItem(row, column, item);
+//////                       break;
+//////                   case 5:
+//////                       ui->shape5->setItem(row, column, item);
+//////                       break;
+//////                   case 6:
+//////                       ui->shape6->setItem(row, column, item);
+//////                       break;
+//////                   }
+//                 }
+//            }
+//       }
 
 //     colors
        ui->colors->setFixedSize(69, 69);
@@ -463,7 +505,7 @@ Widget::Widget(QWidget *parent)
        ui->colors->setItem(1, 1, yellowSquare);
        yellowSquare->setBackgroundColor(Color::yellow->qColor());
 
-       selectedColor = Color::green;
+       on_colors_cellPressed(0, 0);
 
     // board
     ui->board->setFixedSize(600, 600);
