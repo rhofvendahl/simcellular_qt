@@ -424,6 +424,7 @@ Widget::Widget(QWidget *parent)
     // sidebar
     ui->sidebar->layout()->setAlignment(Qt::AlignRight);
     ui->sidebar->layout()->setSpacing(12);
+    ui->sidebar->layout()->setContentsMargins(0, 0, 10, 0);
 
     // colors
     ui->colors->setFixedSize(64, 64);
@@ -565,52 +566,34 @@ void Widget::on_step_forward_pressed()
 
 void Widget::on_pause_pressed()
 {
-    for (int i = 0; i < 200; i++)  {
-        for (int j = 0; j < 200; j++) {
-            game->board[i][j]->determineNext();
-        }
-    }
+    transitionTimer->stop();
 }
 
 void Widget::on_play_pressed()
 {
-    qDebug() << "PLAY PRESSED!";
-    for (int i = 0; i < 200; i++)  {
-        for (int j = 0; j < 200; j++) {
-            Cell *cell = game->board[i][j];
-            QList<Cell*> liveNeighbors = cell->getLiveNeighbors();
-            int tally = liveNeighbors.size();
-
-            bool shouldSurvive = (tally == 2 || tally == 3);
-            bool shouldGenerate = (tally == 3);
-            if (cell->state || shouldGenerate) {
-                qDebug() << "(" << cell->row << cell->column << ")" << tally << "live neighbors &" << cell->state << ":";
-                if (cell->state && shouldSurvive) qDebug() << "surviving";
-                else if (!cell->state && shouldGenerate) qDebug() << "regenerating";
-                else qDebug() << "dying";
-            }
-        }
-    }
+    transitionTimer->start(playInterval);
 }
 
 void Widget::on_fast_forward_pressed()
 {
-
+    transitionTimer->start(fastForwardInterval);
 }
+
 
 void Widget::on_clear_pressed()
 {
+    transitionTimer->stop();
     game->clear();
-    game->board[0][2]->setNext(true, Color::blue);
-    game->board[0][2]->transition();
-    game->board[1][0]->setNext(true, Color::blue);
-    game->board[1][0]->transition();
-    game->board[1][2]->setNext(true, Color::blue);
-    game->board[1][2]->transition();
-    game->board[2][1]->setNext(true, Color::blue);
-    game->board[2][1]->transition();
-    game->board[2][2]->setNext(true, Color::blue);
-    game->board[2][2]->transition();
+//    game->board[0][2]->setNext(true, Color::blue);
+//    game->board[0][2]->transition();
+//    game->board[1][0]->setNext(true, Color::blue);
+//    game->board[1][0]->transition();
+//    game->board[1][2]->setNext(true, Color::blue);
+//    game->board[1][2]->transition();
+//    game->board[2][1]->setNext(true, Color::blue);
+//    game->board[2][1]->transition();
+//    game->board[2][2]->setNext(true, Color::blue);
+//    game->board[2][2]->transition();
     render();
 }
 
