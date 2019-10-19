@@ -63,5 +63,6 @@ private:
 
     void deSelectShapes();
 
+    QList<QTableWidget*> shapeTables;
 };
 #endif // WIDGET_H

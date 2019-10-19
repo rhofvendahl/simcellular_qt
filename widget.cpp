@@ -421,91 +421,89 @@ Widget::Widget(QWidget *parent)
     ui->title->setFont(titleFont);
     ui->title->setAlignment(Qt::AlignRight);
 
-        // sidebar
-        ui->sidebar->layout()->setAlignment(Qt::AlignRight);
+    // sidebar
+    ui->sidebar->layout()->setAlignment(Qt::AlignRight);
+    ui->sidebar->layout()->setSpacing(12);
+
+    // colors
+    ui->colors->setFixedSize(64, 64);
+    ui->colors->setRowCount(2);
+    ui->colors->setColumnCount(2);
+    ui->colors->horizontalHeader()->setVisible(false);
+    ui->colors->verticalHeader()->setVisible(false);
+    ui->colors->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->colors->setFocusPolicy(Qt::NoFocus);
+    ui->colors->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->colors->setShowGrid(false);
+    ui->colors->horizontalHeader()->setMinimumSectionSize(0);
+    ui->colors->verticalHeader()->setMinimumSectionSize(0);
+    ui->colors->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->colors->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //    ui->colors->setFrameStyle(QFrame::Box | QFrame::Plain);
+    //    ui->colors->setFrameStyle(QFrame::NoFrame);
+    ui->colors->setStyleSheet("border: none;");
+
+    QTableWidgetItem *greenSquare = new QTableWidgetItem;
+    ui->colors->setItem(0, 0, greenSquare);
+    greenSquare->setBackgroundColor(Color::green->qColor());
+    QTableWidgetItem *blueSquare = new QTableWidgetItem;
+    ui->colors->setItem(0, 1, blueSquare);
+    blueSquare->setBackgroundColor(Color::blue->qColor());
+    QTableWidgetItem *redSquare = new QTableWidgetItem;
+    ui->colors->setItem(1, 0, redSquare);
+    redSquare->setBackgroundColor(Color::red->qColor());
+    QTableWidgetItem *yellowSquare = new QTableWidgetItem;
+    ui->colors->setItem(1, 1, yellowSquare);
+    yellowSquare->setBackgroundColor(Color::yellow->qColor());
+
+    on_colors_cellPressed(0, 0);
 
         // shapes
-        ui->shape0->setFixedSize(69, 69);
-        ui->shape1->setFixedSize(69, 69);
-        ui->shape2->setFixedSize(69, 69);
-        ui->shape3->setFixedSize(69, 69);
-        ui->shape4->setFixedSize(69, 69);
-        ui->shape5->setFixedSize(69, 69);
-        ui->shape6->setFixedSize(69, 69);
+        shapeTables += ui->shape0;
+        shapeTables += ui->shape1;
+        shapeTables += ui->shape2;
+        shapeTables += ui->shape3;
+        shapeTables += ui->shape4;
+        shapeTables += ui->shape5;
+        shapeTables += ui->shape6;
+
         const QModelIndex index; // not actually used, so ok blank
         on_shape0_pressed(index);
-        on_shape1_pressed(index);
-        qDebug() << library->toad;
-//        for (int i = 0; i < library->shapes.size(); i++) {
-//            QList<QList<bool>> shape = library->shapes[i];
-//            for (int row = 0; row < ui->board->rowCount(); row++) {
-//               for (int column = 0; column < ui->board->columnCount(); column++) {
-//                   QTableWidgetItem *item = new QTableWidgetItem();
-////                   if (shape[row][column]) {
-////                       item->setBackgroundColor(selectedColor->qColor());
-////                   } else {
-////                       item->setBackgroundColor(Color::white->qColor());
-////                   }
-//////                   switch (i) {
-//////                   // could set items everywhere then just do this for setbackgroundcolor (later)
-//////                   case 0:
-//////                       ui->shape0->setItem(row, column, item);
-//////                       break;
-//////                   case 1:
-//////                       ui->shape1->setItem(row, column, item);
-//////                       break;
-//////                   case 2:
-//////                       ui->shape2->setItem(row, column, item);
-//////                       break;
-//////                   case 3:
-//////                       ui->shape3->setItem(row, column, item);
-//////                       break;
-//////                   case 4:
-//////                       ui->shape4->setItem(row, column, item);
-//////                       break;
-//////                   case 5:
-//////                       ui->shape5->setItem(row, column, item);
-//////                       break;
-//////                   case 6:
-//////                       ui->shape6->setItem(row, column, item);
-//////                       break;
-//////                   }
-//                 }
-//            }
-//       }
+//        on_shape1_pressed(index);
+//        qDebug() << library->toad;
+        for (int i = 0; i < library->shapes.size(); i++) {
+            QList<QList<bool>> shape = library->shapes[i];
+            shapeTables[i]->setFixedSize(64, 64);
+            shapeTables[i]->setRowCount(shape.size());
+            shapeTables[i]->setColumnCount(shape[0].size());
+            shapeTables[i]->horizontalHeader()->setVisible(false);
+            shapeTables[i]->verticalHeader()->setVisible(false);
+            shapeTables[i]->setEditTriggers(QAbstractItemView::NoEditTriggers);
+            shapeTables[i]->setFocusPolicy(Qt::NoFocus);
+            shapeTables[i]->setSelectionMode(QAbstractItemView::NoSelection);
+            shapeTables[i]->setShowGrid(false);
+            shapeTables[i]->horizontalHeader()->setMinimumSectionSize(0);
+            shapeTables[i]->verticalHeader()->setMinimumSectionSize(0);
+            shapeTables[i]->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            shapeTables[i]->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-//     colors
-       ui->colors->setFixedSize(69, 69);
-       ui->colors->setRowCount(2);
-       ui->colors->setColumnCount(2);
-       ui->colors->horizontalHeader()->setVisible(false);
-       ui->colors->verticalHeader()->setVisible(false);
-       ui->colors->setEditTriggers(QAbstractItemView::NoEditTriggers);
-       ui->colors->setFocusPolicy(Qt::NoFocus);
-       ui->colors->setSelectionMode(QAbstractItemView::NoSelection);
-       ui->colors->setShowGrid(false);
-       ui->colors->horizontalHeader()->setMinimumSectionSize(0);
-       ui->colors->verticalHeader()->setMinimumSectionSize(0);
-       ui->colors->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-       ui->colors->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-   //    ui->colors->setFrameStyle(QFrame::Box | QFrame::Plain);
-   //    ui->colors->setFrameStyle(QFrame::NoFrame);
-       ui->colors->setStyleSheet("border: none;");
 
-       QTableWidgetItem *greenSquare = new QTableWidgetItem;
-       ui->colors->setItem(0, 0, greenSquare);
-       greenSquare->setBackgroundColor(Color::green->qColor());
-       QTableWidgetItem *blueSquare = new QTableWidgetItem;
-       ui->colors->setItem(0, 1, blueSquare);
-       blueSquare->setBackgroundColor(Color::blue->qColor());
-       QTableWidgetItem *redSquare = new QTableWidgetItem;
-       ui->colors->setItem(1, 0, redSquare);
-       redSquare->setBackgroundColor(Color::red->qColor());
-       QTableWidgetItem *yellowSquare = new QTableWidgetItem;
-       ui->colors->setItem(1, 1, yellowSquare);
-       yellowSquare->setBackgroundColor(Color::yellow->qColor());
-
-       on_colors_cellPressed(0, 0);
+            // GOTTA DO THAT TABLE PRE-WORK
+            for (int row = 0; row < shape.size(); row++) {
+                for (int column = 0; column < shape[0].size(); column++) {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    qDebug() << i << row << column << shape.size() << shape[0].size();
+                   if (shape[row][column]) {
+                       qDebug() << "true";
+                       item->setBackgroundColor(selectedColor->qColor());
+                   } else {
+                       qDebug() << "false";
+                       item->setBackgroundColor(Color::white->qColor());
+                   }
+                   shapeTables[i]->setItem(row, column, item);
+               }
+           }
+       }
 
     // board
     ui->board->setFixedSize(600, 600);
