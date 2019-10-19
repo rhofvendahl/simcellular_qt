@@ -11,6 +11,9 @@ public:
     QList<QList<bool>> toad;
     QList<QList<bool>> beehive;
     QList<QList<QList<bool>>> shapes;
+
+private:
+    void loadShapes();
 };
 
 #endif // LIBRARY_H
