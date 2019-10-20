@@ -7,18 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>747</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: white;
-color: #808080;</string>
+   <string notr="true"/>
   </property>
-<<<<<<< Updated upstream
-=======
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="4" column="1">
     <widget class="QLabel" name="about">
@@ -207,7 +204,6 @@ color: #808080;</string>
     <widget class="QTableWidget" name="board"/>
    </item>
   </layout>
->>>>>>> Stashed changes
  </widget>
  <resources/>
  <connections/>

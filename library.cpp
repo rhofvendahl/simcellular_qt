@@ -6,6 +6,7 @@
 #include <QJsonArray>
 #include <QFile>
 #include <QTextStream>
+#include <QDebug>
 
 Library::Library()
 {
@@ -31,7 +32,7 @@ void Library::loadShapes() {
     QJsonArray shapesArray = shapesObject["shapes"].toArray();
 
     for (int i = 0; i < shapesArray.size(); i++) {
-        QJsonArray shapeArray = shapesArray[0].toArray();
+        QJsonArray shapeArray = shapesArray[i].toArray();
         QList<QList<bool>> shapeList;
         for (int row = 0; row < shapeArray.size(); row++) {
             QJsonArray rowArray = shapeArray[row].toArray();

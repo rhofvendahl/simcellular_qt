@@ -59,9 +59,12 @@ private:
     const int fastForwardInterval = 50;
 
     Color *selectedColor;
-    int selectedShape;
+    int selectedShapeIndex;
 
     void deSelectShapes();
 
+    QList<QTableWidget*> shapeTables;
+
+    Cell *prevCellPressed;
 };
 #endif // WIDGET_H
