@@ -21,8 +21,8 @@ SOURCES += \
 #    game.cpp \
 #    library.cpp \
 #    main.cpp \
-    moc_widget.cpp \
-    moc_widget_rename.cpp \
+#    moc_widget.cpp \
+#    moc_widget_rename.cpp \
     sources/cell.cpp \
     sources/color.cpp \
     sources/game.cpp \

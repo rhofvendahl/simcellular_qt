@@ -24,7 +24,7 @@ Library::Library()
 }
 
 void Library::loadShapes() {
-    QFile shapesFile("shapes.json");
+    QFile shapesFile("../resources/shapes.json");
     shapesFile.open(QIODevice::ReadOnly);
     QByteArray shapesData = shapesFile.readAll();
     QJsonDocument shapesDoc(QJsonDocument::fromJson(shapesData));

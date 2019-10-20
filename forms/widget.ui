@@ -92,7 +92,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>step_forward_icon.png</normaloff>step_forward_icon.png</iconset>
+          <normaloff>../resources/step_forward_icon.png</normaloff>../resources/step_forward_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -103,7 +103,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>pause_icon.png</normaloff>pause_icon.png</iconset>
+          <normaloff>../resources/pause_icon.png</normaloff>../resources/pause_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -114,7 +114,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>play_icon.png</normaloff>play_icon.png</iconset>
+          <normaloff>../resources/play_icon.png</normaloff>../resources/play_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -125,7 +125,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>forward_icon.png</normaloff>forward_icon.png</iconset>
+          <normaloff>../resources/forward_icon.png</normaloff>../resources/forward_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -136,7 +136,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>stop_icon.png</normaloff>stop_icon.png</iconset>
+          <normaloff>../resources/stop_icon.png</normaloff>../resources/stop_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -147,7 +147,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>random_icon.png</normaloff>random_icon.png</iconset>
+          <normaloff>../resources/random_icon.png</normaloff>../resources/random_icon.png</iconset>
         </property>
        </widget>
       </item>

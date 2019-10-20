@@ -404,21 +404,21 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QFile file("stylesheet.qss");
+    QFile file("../resources/stylesheet.qss");
     file.open(QIODevice::ReadOnly);
     QString stylesheet = QLatin1String(file.readAll());
     this->setStyleSheet(stylesheet);
 
-    int id = QFontDatabase::addApplicationFont("open_sans_condensed_light.ttf");
+    int id = QFontDatabase::addApplicationFont("../resources/open_sans_condensed_light.ttf");
     QString openSansCondensed = QFontDatabase::applicationFontFamilies(id).at(0);
 
     game = new Game(boardRows, boardColumns);
     library = new Library();
 
-        transitionTimer = new QTimer(this);
-        connect(transitionTimer, SIGNAL(timeout()), this, SLOT(transitionHandler()));
+     transitionTimer = new QTimer(this);
+    connect(transitionTimer, SIGNAL(timeout()), this, SLOT(transitionHandler()));
 
-    // title
+//     title
     QFont titleFont = QFont(openSansCondensed);
     titleFont.setPixelSize(60);
     ui->title->setFont(titleFont);
@@ -485,8 +485,6 @@ Widget::Widget(QWidget *parent)
             shapeTables[i]->verticalHeader()->setMinimumSectionSize(0);
             shapeTables[i]->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
             shapeTables[i]->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-//            shapeTables[i]->setContentsMargins(100, 100, 100, 100);
-
             for (int row = 0; row < shape.size(); row++) {
                 for (int column = 0; column < shape[0].size(); column++) {
                     QTableWidgetItem *item = new QTableWidgetItem();
