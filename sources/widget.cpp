@@ -376,10 +376,10 @@
 //>>>>>>> Stashed changes
 
 
-#include "widget.h"
+#include "headers/widget.h"
 #include "ui_widget.h"
-#include "game.h"
-#include "color.h"
+#include "headers/game.h"
+#include "headers/color.h"
 
 #include <QFile>
 #include <QDebug>

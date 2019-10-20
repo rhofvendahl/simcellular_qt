@@ -16,22 +16,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cell.cpp \
-    color.cpp \
-    game.cpp \
-    library.cpp \
-    main.cpp \
-    widget.cpp
+#    cell.cpp \
+#    color.cpp \
+#    game.cpp \
+#    library.cpp \
+#    main.cpp \
+    moc_widget.cpp \
+    moc_widget_rename.cpp \
+    sources/cell.cpp \
+    sources/color.cpp \
+    sources/game.cpp \
+    sources/library.cpp \
+    sources/main.cpp \
+    sources/widget.cpp# \
+#    widget.cpp
 
 HEADERS += \
-    cell.h \
-    color.h \
-    game.h \
-    library.h \
-    widget.h
+#    cell.h \
+#    color.h \
+#    game.h \
+    headers/cell.h \
+    headers/color.h \
+    headers/game.h \
+    headers/library.h \
+    headers/widget.h# \
+#    library.h \
+#    widget.h
 
 FORMS += \
-    widget.ui
+    forms/widget.ui# \
+#    widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -39,5 +53,22 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    shapes.json \
-    stylesheet.qss
+#    README.md \
+    resources/black_forward_icon.png \
+    resources/black_pause_icon.png \
+    resources/black_play_icon.png \
+    resources/black_random_icon.png \
+    resources/black_step_forward_icon.png \
+    resources/black_stop_icon.png \
+    resources/forward_icon.png \
+    resources/open_sans_condensed_light.ttf \
+    resources/pause_icon.png \
+    resources/play_icon.png \
+    resources/random_icon.png \
+    resources/shapes.json \
+    resources/step_forward_icon.png \
+    resources/stop_icon.png \
+    resources/stylesheet.qss# \
+#    shapes.json \
+#    simcellular_qt \
+#    stylesheet.qss

@@ -109,7 +109,7 @@
 //        }
 //    }
 //}
-#include "game.h"
+#include "headers/game.h"
 
 #include <QList>
 //#include <QRandomGenerator>

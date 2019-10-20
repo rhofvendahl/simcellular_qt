@@ -108,7 +108,7 @@
 //    return QColor(redValue, greenValue, blueValue);
 //}
 
-#include "color.h"
+#include "headers/color.h"
 
 #include <QColor>
 #include <QRandomGenerator>

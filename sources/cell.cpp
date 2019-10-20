@@ -94,8 +94,8 @@
 ////>>>>>>> Stashed changes
 //}
 
-#include "cell.h"
-#include "color.h"
+#include "headers/cell.h"
+#include "headers/color.h"
 
 #include <QtMath>
 #include <QRandomGenerator>
