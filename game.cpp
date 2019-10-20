@@ -159,7 +159,6 @@ void Game::transition()
     for (int row = 0; row < board.size(); row++) {
         for (int column = 0; column < board[0].size(); column++) {
             board[row][column]->determineNext();
-//            qDebug() << "determineNext" << row << column << board[row][column];
         }
     }
 
@@ -172,9 +171,11 @@ void Game::transition()
 
 void Game::insert(Cell *insertCell, QList<QList<bool>> shape, Color *color)
 {
+    qDebug() << "inserting";
     for (int shapeRow = 0; shapeRow < shape.size(); shapeRow++) {
         for (int shapeColumn = 0; shapeColumn < shape[0].size(); shapeColumn++) {
             Cell *cell = inRangeCell(insertCell->row + shapeRow, insertCell->column + shapeColumn);
+            qDebug() << cell->row << cell->column;
             cell->setNext(shape[shapeRow][shapeColumn], color);
             cell->transition();
         }

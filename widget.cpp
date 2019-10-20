@@ -397,6 +397,8 @@
 #include <QTableWidgetItem>
 #include <QString>
 
+// TODO: make it easier to press-change cells
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent), ui(new Ui::Widget)
 {
@@ -457,7 +459,6 @@ Widget::Widget(QWidget *parent)
     QTableWidgetItem *yellowSquare = new QTableWidgetItem;
     ui->colors->setItem(1, 1, yellowSquare);
     yellowSquare->setBackgroundColor(Color::yellow->qColor());
-
     on_colors_cellPressed(0, 1);
 
         // shapes
@@ -469,10 +470,6 @@ Widget::Widget(QWidget *parent)
         shapeTables += ui->shape5;
         shapeTables += ui->shape6;
 
-        const QModelIndex index; // not actually used, so ok blank
-        on_shape0_pressed(index);
-//        on_shape1_pressed(index);
-//        qDebug() << library->toad;
         for (int i = 0; i < library->shapes.size(); i++) {
             QList<QList<bool>> shape = library->shapes[i];
             shapeTables[i]->setFixedSize(64, 64);
@@ -493,19 +490,17 @@ Widget::Widget(QWidget *parent)
             for (int row = 0; row < shape.size(); row++) {
                 for (int column = 0; column < shape[0].size(); column++) {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    qDebug() << i << row << column << shape.size() << shape[0].size();
-                   if (shape[row][column]) {
-                       qDebug() << "true";
+
+                    if (shape[row][column]) {
                        item->setBackgroundColor(selectedColor->qColor());
                    } else {
-                       qDebug() << "false";
                        item->setBackgroundColor(Color::white->qColor());
                    }
+
                    shapeTables[i]->setItem(row, column, item);
                }
            }
        }
-
     // board
     ui->board->setFixedSize(600, 600);
     ui->board->setRowCount(boardRows);
@@ -537,7 +532,10 @@ Widget::Widget(QWidget *parent)
     aboutFont.setPixelSize(50);
     ui->about->setFont(aboutFont);
 
+    const QModelIndex index; // not actually used, so ok blank
+    on_shape0_pressed(index);
     on_random_pressed();
+    prevCellPressed = nullptr;
 }
 
 Widget::~Widget()
@@ -551,7 +549,6 @@ void Widget::render() {
     for (int row = 0; row < game->board.size(); row++) {
         for (int column = 0; column < game->board[0].size(); column++) {
             QColor color = game->board[row][column]->color->qColor();
-//            qDebug() << color.red() << color.blue() << color.green() << game->board[row][column].state;
             ui->board->item(row, column)->setBackgroundColor(color);
         }
     }
@@ -559,11 +556,7 @@ void Widget::render() {
 
 void Widget::on_step_forward_pressed()
 {
-    qDebug() << "STEP FORWARD PRESSED!";
-//    game->board[0][1]->color->setBlue();
-//    game->board[0][0]->color->copy(game->board[0][1]->color);
     game->transition();
-//    qDebug() << game->board[0][0]->state << game->board[0][1]->state;
     render();
 }
 
@@ -598,22 +591,32 @@ void Widget::on_random_pressed()
 
 void Widget::on_board_cellEntered(int row, int column)
 {
-    if (selectedShape == 0) {
-        if (QApplication::mouseButtons() == Qt::LeftButton) {
-            Cell *cell = game->board[row][column];
-            if (cell->state) {
-                cell->setNext(false);
-            } else {
-                cell->setNext(true, selectedColor);
-            }
-            cell->transition();
-            render();
+    if (QApplication::mouseButtons() == Qt::LeftButton) {
+        Cell *cell = game->board[row][column];
+        if (cell != prevCellPressed) {
+            on_board_cellPressed(row, column);
         }
     }
 }
 
+void Widget::on_board_cellPressed(int row, int column)
+{
+    Cell *cell = game->board[row][column];
+    prevCellPressed = cell;
+    if (selectedShapeIndex == 0) {
+        if (cell->state) {
+            cell->setNext(false);
+        } else {
+            cell->setNext(true, selectedColor);
+        }
+        cell->transition();
+    } else {
+        game->insert(cell, library->shapes[selectedShapeIndex], selectedColor);
+    }
+    render();
+}
+
 void Widget::transitionHandler() {
-    qDebug() << "handling transition";
     game->transition();
     render();
 }
@@ -631,60 +634,51 @@ void Widget::on_colors_cellPressed(int row, int column)
     }
 }
 
-void Widget::on_board_cellPressed(int row, int column)
-{
-    if (selectedShape != 0) {
-
-    }
-}
-
 void Widget::on_shape0_pressed(const QModelIndex &index)
 {
-    qDebug() << "shape0 pressed";
-    selectedShape = 0;
+    selectedShapeIndex = 0;
     deSelectShapes();
     ui->shape0->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape1_pressed(const QModelIndex &index)
 {
-    qDebug() << "shape1 pressed";
-    selectedShape = 1;
+    selectedShapeIndex = 1;
     deSelectShapes();
     ui->shape1->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape2_pressed(const QModelIndex &index)
 {
-    selectedShape = 2;
+    selectedShapeIndex = 2;
     deSelectShapes();
     ui->shape2->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape3_pressed(const QModelIndex &index)
 {
-    selectedShape = 3;
+    selectedShapeIndex = 3;
     deSelectShapes();
     ui->shape3->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape4_pressed(const QModelIndex &index)
 {
-    selectedShape = 4;
+    selectedShapeIndex = 4;
     deSelectShapes();
     ui->shape4->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape5_pressed(const QModelIndex &index)
 {
-    selectedShape = 5;
+    selectedShapeIndex = 5;
     deSelectShapes();
     ui->shape5->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }
 
 void Widget::on_shape6_pressed(const QModelIndex &index)
 {
-    selectedShape = 6;
+    selectedShapeIndex = 6;
     deSelectShapes();
     ui->shape6->setStyleSheet("border: 1px solid #808080; padding-left: 1px; padding-top: 1px; padding-right: -2px; padding-bottom: -2px;");
 }

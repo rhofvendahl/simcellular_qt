@@ -33,14 +33,11 @@ void Library::loadShapes() {
 
     for (int i = 0; i < shapesArray.size(); i++) {
         QJsonArray shapeArray = shapesArray[i].toArray();
-        qDebug() << shapeArray.size();
         QList<QList<bool>> shapeList;
         for (int row = 0; row < shapeArray.size(); row++) {
             QJsonArray rowArray = shapeArray[row].toArray();
             QList<bool> rowList;
             for (int column = 0; column < rowArray.size(); column++) {
-                qDebug() << "shape row column" << i << row << column;
-                qDebug() << "shapesize rowsize columnsize" << shapesArray.size() << shapeArray.size() << rowArray.size();
                 rowList += rowArray[column].toBool();
             }
             shapeList += rowList;

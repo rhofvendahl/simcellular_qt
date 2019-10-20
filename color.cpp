@@ -121,16 +121,11 @@ Color *Color::yellow = new Color(245, 227, 68);
 Color *Color::white = new Color(255, 255, 255);
 
 Color::Color() {
-//    qDebug() << "default color (white)";
     copy(white);
-
-//    qDebug() << "blueValue of blue is:" << blue->redValue << blue->greenValue << blue->blueValue;
-
 }
 
 Color::Color(int redParameter, int greenParameter, int blueParameter)
 {
-//    qDebug() << "new color:" << red << blue << green;
     redValue = redParameter;
     greenValue = greenParameter;
     blueValue = blueParameter;
@@ -193,10 +188,7 @@ void Color::setGreen() {
 }
 
 void Color::setBlue() {
-//    qDebug() << "trying!" << redValue << "should be:";
-//    qDebug() << blue->redValue;
     copy(blue);
-//    qDebug() << redValue << "should be" << blue->redValue;
 }
 
 void Color::setYellow() {
@@ -204,9 +196,6 @@ void Color::setYellow() {
 }
 
 void Color::setWhite() {
-//    redValue = white->redValue;
-//    greenValue = 255;
-//    blueValue = 255;
     copy(white);
 }
 
@@ -232,11 +221,7 @@ QColor Color::qColor() {
 }
 
 void Color::copy(Color *color) {
-//    qDebug() << "copying";
-//    Color *someColor = new Color(0, 0, 255);
-//    qDebug() << "testing out a new shade of blue!" << someColor->redValue << someColor->greenValue << someColor->blueValue;
     redValue = color->redValue;
     greenValue = color->greenValue;
     blueValue = color->blueValue;
-//    qDebug() << "done copying";
 }
