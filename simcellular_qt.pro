@@ -36,6 +36,7 @@ HEADERS += \
 #    color.h \
 #    game.h \
     build/moc_predefs.h \
+    build/simcellular_qt/moc_predefs.h \
     headers/cell.h \
     headers/color.h \
     headers/game.h \
@@ -57,6 +58,7 @@ DISTFILES += \
 #    README.md \
     README.md \
     build/simcellular_qt \
+    build/simcellular_qt/simcellular_qt \
     resources/black_forward_icon.png \
     resources/black_pause_icon.png \
     resources/black_play_icon.png \
@@ -75,3 +77,5 @@ DISTFILES += \
 #    shapes.json \
 #    simcellular_qt \
 #    stylesheet.qss
+
+RESOURCES +=
