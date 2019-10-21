@@ -460,7 +460,7 @@ Widget::Widget(QWidget *parent)
     QTableWidgetItem *yellowSquare = new QTableWidgetItem;
     ui->colors->setItem(1, 1, yellowSquare);
     yellowSquare->setBackgroundColor(Color::yellow->qColor());
-//    on_colors_cellPressed(0, 1);
+//    on_colors_cellPressed(0, 1); (trouble, as shapeTables not yet defined
     selectedColor = Color::blue;
 
         // shapes
@@ -534,6 +534,7 @@ Widget::Widget(QWidget *parent)
 
     on_random_pressed();
     prevCellPressed = nullptr;
+
     QTimer::singleShot(0, this, SLOT(on_shape0_pressed())); // workaround for ui issue
 }
 
