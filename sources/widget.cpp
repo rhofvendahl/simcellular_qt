@@ -396,6 +396,7 @@
 #include <QColor>
 #include <QTableWidgetItem>
 #include <QString>
+#include <QModelIndex>
 
 // TODO: make it easier to press-change cells
 
@@ -459,7 +460,8 @@ Widget::Widget(QWidget *parent)
     QTableWidgetItem *yellowSquare = new QTableWidgetItem;
     ui->colors->setItem(1, 1, yellowSquare);
     yellowSquare->setBackgroundColor(Color::yellow->qColor());
-    on_colors_cellPressed(0, 1);
+//    on_colors_cellPressed(0, 1);
+    selectedColor = Color::blue;
 
         // shapes
         shapeTables += ui->shape0;
@@ -530,16 +532,17 @@ Widget::Widget(QWidget *parent)
     aboutFont.setPixelSize(50);
     ui->about->setFont(aboutFont);
 
-    const QModelIndex index; // not actually used, so ok blank
-    on_shape0_pressed(index);
     on_random_pressed();
     prevCellPressed = nullptr;
+    QTimer::singleShot(0, this, SLOT(on_shape0_pressed())); // workaround for ui issue
 }
 
 Widget::~Widget()
 {
     delete ui;
 }
+
+QModelIndex Widget::tempIndex = *(new QModelIndex());
 
 void Widget::render() {
     QBrush brush = QBrush(QColor(0, 0, 0));
@@ -557,6 +560,8 @@ void Widget::on_step_forward_pressed()
     transitionTimer->stop();
     game->transition();
     render();
+    const QModelIndex index; // not actually used, so ok blank
+    on_shape0_pressed(index);
 }
 
 void Widget::on_pause_pressed()
@@ -631,6 +636,7 @@ void Widget::on_colors_cellPressed(int row, int column)
     } else {
         selectedColor = Color::yellow;
     }
+    renderSidebar();
 }
 
 void Widget::on_shape0_pressed(const QModelIndex &index)
@@ -687,4 +693,19 @@ void Widget::deSelectShapes() {
     for (int i = 0; i < shapeTables.size(); i++) {
         shapeTables[i]->setStyleSheet(deSelectedStyleSheet);
     }
+}
+
+void Widget::renderSidebar() {
+    for (int i = 0; i < library->shapes.size(); i++) {
+        QList<QList<bool>> shape = library->shapes[i];
+        for (int row = 0; row < shape.size(); row++) {
+            for (int column = 0; column < shape[0].size(); column++) {
+                QTableWidgetItem *item = shapeTables[i]->item(row, column);
+                qDebug() << i << row << column << shape[row][column];
+                if (shape[row][column]) {
+                   item->setBackgroundColor(selectedColor->qColor());
+               }
+           }
+       }
+   }
 }

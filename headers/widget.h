@@ -12,6 +12,7 @@
 #include <QToolButton>
 #include <QFrame>
 #include <QTimer>
+#include <QModelIndex>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -36,15 +37,16 @@ private slots:
     void transitionHandler();
     void on_colors_cellPressed(int row, int column);
     void on_board_cellPressed(int row, int column);
-    void on_shape0_pressed(const QModelIndex &index);
-    void on_shape1_pressed(const QModelIndex &index);
-    void on_shape2_pressed(const QModelIndex &index);
-    void on_shape3_pressed(const QModelIndex &index);
-    void on_shape4_pressed(const QModelIndex &index);
-    void on_shape5_pressed(const QModelIndex &index);
-    void on_shape6_pressed(const QModelIndex &index);
+    void on_shape0_pressed(const QModelIndex &index = tempIndex);
+    void on_shape1_pressed(const QModelIndex &index = tempIndex);
+    void on_shape2_pressed(const QModelIndex &index = tempIndex);
+    void on_shape3_pressed(const QModelIndex &index = tempIndex);
+    void on_shape4_pressed(const QModelIndex &index = tempIndex);
+    void on_shape5_pressed(const QModelIndex &index = tempIndex);
+    void on_shape6_pressed(const QModelIndex &index = tempIndex);
 
 private:
+    static QModelIndex tempIndex;
     Ui::Widget *ui;
 
     const int boardRows = 30;
@@ -66,5 +68,7 @@ private:
     QList<QTableWidget*> shapeTables;
 
     Cell *prevCellPressed;
+
+    void renderSidebar();
 };
 #endif // WIDGET_H
