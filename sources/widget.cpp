@@ -554,6 +554,7 @@ void Widget::render() {
 
 void Widget::on_step_forward_pressed()
 {
+    transitionTimer->stop();
     game->transition();
     render();
 }

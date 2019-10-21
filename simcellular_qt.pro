@@ -35,6 +35,7 @@ HEADERS += \
 #    cell.h \
 #    color.h \
 #    game.h \
+    build/moc_predefs.h \
     headers/cell.h \
     headers/color.h \
     headers/game.h \
@@ -54,6 +55,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
 #    README.md \
+    README.md \
+    build/simcellular_qt \
     resources/black_forward_icon.png \
     resources/black_pause_icon.png \
     resources/black_play_icon.png \
