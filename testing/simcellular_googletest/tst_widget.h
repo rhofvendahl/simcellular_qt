@@ -6,10 +6,84 @@
 
 using namespace testing;
 
-//TEST(color_testStatics, red)
-//{
-//    EXPECT_EQ(1, 1);
-//    ASSERT_THAT(0, Eq(0));
-//}
+// TODO
+// Widget_ConstructorTest
+
+TEST(Widget_ConstructorTest, loadsAndAppliesStylesheetFile) {
+
+}
+
+TEST(Widget_ConstructorTest, loadsAndAppliesFontsFile) {
+
+}
+
+TEST(Widget_ConstructorTest, setsGame) {
+
+}
+
+TEST(Widget_ConstructorTest, setsLibrary) {
+
+}
+
+TEST(Widget_ConstructorTest, setsTransitionTimer) {
+
+}
+
+TEST(Widget_ConstructorTest, createsColorSquares) {
+
+}
+
+TEST(Widget_ConstructorTest, createsShapes) {
+
+}
+
+TEST(Widget_ConstructorTest, createsBoardCells) {
+
+}
+
+TEST(Widget_ConstructorTest, pressesRandom) {
+
+}
+
+TEST(Widget_ConstructorTest, pressesShape0) {
+
+}
+
+// TODO
+// Widget_BoardTest (TODO)
+// (render, transitionHandler, on_board_*)
+
+// TODO
+// Widget_ControlsTest
+
+TEST(Widget_ControlsTest, stepsForward) {
+
+}
+
+TEST(Widget_ControlsTest, pauses) {
+
+}
+
+TEST(Widget_ControlsTest, plays) {
+
+}
+
+TEST(Widget_ControlsTest, fastForwards) {
+
+}
+
+TEST(Widget_ControlsTest, clears) {
+
+}
+
+TEST(Widget_ControlsTest, randomizes) {
+
+}
+
+// TODO
+// Widget_ColorsTest
+
+// TODO
+// Widget_ShapesTest
 
 #endif // TST_WIDGET_H

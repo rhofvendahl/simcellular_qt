@@ -3,13 +3,12 @@
 
 #include <QList>
 
-class Library
-{
+class Library {
 public:
     Library();
-    QList<QList<bool>> glider;
-    QList<QList<bool>> toad;
-    QList<QList<bool>> beehive;
+//    QList<QList<bool>> glider;
+//    QList<QList<bool>> toad;
+//    QList<QList<bool>> beehive;
     QList<QList<QList<bool>>> shapes;
 
 private:

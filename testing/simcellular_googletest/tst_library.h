@@ -6,10 +6,18 @@
 
 using namespace testing;
 
-//TEST(suite, case)
-//{
-//    EXPECT_EQ(1, 1);
-//    ASSERT_THAT(0, Eq(0));
-//}
+// TODO
+// Library_ConstructorTest
+
+TEST(Library_ConstructorTest, initializesShapes) {
+
+}
+
+// TODO
+// Library_LoadShapesTest
+
+TEST(Library_LoadShapesTest, loadsAllShapes) {
+
+}
 
 #endif // TST_LIBRARY_H

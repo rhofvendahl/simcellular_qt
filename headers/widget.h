@@ -18,8 +18,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
-{
+class Widget : public QWidget {
     Q_OBJECT
 
 public:
@@ -69,6 +68,6 @@ private:
 
     Cell *prevCellPressed;
 
-    void renderSidebar();
+    void renderShapes();
 };
 #endif // WIDGET_H
