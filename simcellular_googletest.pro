@@ -18,7 +18,11 @@ HEADERS += \
         headers/game.h \
         headers/library.h \
         headers/widget.h \
-        testing/simcellular_googletest/tst_case.h
+        testing/simcellular_googletest/tst_cell.h \
+        testing/simcellular_googletest/tst_color.h \
+        testing/simcellular_googletest/tst_game.h \
+        testing/simcellular_googletest/tst_library.h \
+        testing/simcellular_googletest/tst_widget.h
 
 SOURCES += \
         sources/cell.cpp \

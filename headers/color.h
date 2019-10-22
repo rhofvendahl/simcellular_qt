@@ -65,6 +65,8 @@ public:
     void setRandom();
 
     void copy(Color *color);
+
+//    static bool areSame(Color *color1, Color *color2);
 };
 
 #endif // COLOR_H

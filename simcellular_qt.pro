@@ -16,38 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-#    cell.cpp \
-#    color.cpp \
-#    game.cpp \
-#    library.cpp \
-#    main.cpp \
-#    moc_widget.cpp \
-#    moc_widget_rename.cpp \
     sources/cell.cpp \
     sources/color.cpp \
     sources/game.cpp \
     sources/library.cpp \
     sources/main.cpp \
-    sources/widget.cpp# \
-#    widget.cpp
+    sources/widget.cpp
 
 HEADERS += \
-#    cell.h \
-#    color.h \
-#    game.h \
     build/moc_predefs.h \
     build/simcellular_qt/moc_predefs.h \
     headers/cell.h \
     headers/color.h \
     headers/game.h \
     headers/library.h \
-    headers/widget.h# \
-#    library.h \
-#    widget.h
+    headers/widget.h
 
 FORMS += \
-    forms/widget.ui# \
-#    widget.ui
+    forms/widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -55,7 +41,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-#    README.md \
     README.md \
     build/simcellular_qt \
     build/simcellular_qt/simcellular_qt \
@@ -73,9 +58,6 @@ DISTFILES += \
     resources/shapes.json \
     resources/step_forward_icon.png \
     resources/stop_icon.png \
-    resources/stylesheet.qss# \
-#    shapes.json \
-#    simcellular_qt \
-#    stylesheet.qss
+    resources/stylesheet.qss
 
 RESOURCES +=

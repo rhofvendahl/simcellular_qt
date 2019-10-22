@@ -49,7 +49,7 @@ public:
     void transition();
     void setNext(bool state, Color *colorParameter=nullptr);
     void setNextRandom();
-    Color  *getAverageColor(QList<Cell*> liveNeighbors);
+    static Color  *getAverageColor(QList<Cell*> liveNeighbors);
 
 };
 

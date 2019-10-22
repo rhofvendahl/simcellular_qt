@@ -1,4 +1,8 @@
-#include "tst_case.h"
+#include "tst_cell.h"
+#include "tst_color.h"
+#include "tst_game.h"
+#include "tst_library.h"
+#include "tst_widget.h"
 
 #include <gtest/gtest.h>
 
