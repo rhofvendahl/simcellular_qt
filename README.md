@@ -1,53 +1,33 @@
-# simcellular
+# simcellular_qt
 
-#### Angular 4 web application, 04.06.2018
+#### Angular 4 web application, Oct 2019
 
 #### By Russell Hofvendahl
 
 ## Description
 
-An implementation of Conway's Game of Life, a cellular automaton in which each state is determined by the state prior according to a few simple rules. Application built with Angular CLI and Firebase for data storage.
+An implementation of Conway's Game of Life, a cellular automaton in which each state is determined by the state prior according to a few simple rules. Application built with Qt, coverage through Google Test.
+
+Original project live at http://simcellular.us
 
 ## Setup/Installation Requirements
 
-To view:
-http://simcellular.us
-
-To set up repository:
+* install Qt5
+* ```
+git clone https://github.com/rhofvendahl/simcellular_qt
+cd simcellular_qt
+qmake .
+cd simcellular_qt_build
+make
 ```
-git clone https://github.com/rhofvendahl/webpack-heroku-template
-cd webpack-heroku-template
-
-npm install
-
-```
-To set up Firebase:
-* Make a free account at [Firebase's website](http://firebase.google.com/)
-* Create new project
-* Select "Add Firebase to your web app"
-* Copy credentials provided, set up file src/app/api-keys.ts as follows:
-```
-export var masterFirebaseConfig = {
-    apiKey: "xxxx",
-    authDomain: "xxxx.firebaseapp.com",
-    databaseURL: "https://xxxx.firebaseio.com",
-    storageBucket: "xxxx.appspot.com",
-    messagingSenderId: "xxxx"
-  };
-```
-* Return to the [Firebase Console](https://console.firebase.google.com/), select project, select "Database" on left-hand side.
-* Select "Rules" on top navbar, change both ".read" and ".write" to "true", then click publish.
-* Return to "Database" on left hand side, select 3 vertical dots on right hand side then select "Import JSON"
-* Select shapes.json in src to import
-
-To start server:
-```
-npm start
-```
+OR:
+* install QtCreator
+* open simcellular_qt.pro file in creator
+* press run (bottom left)
 
 ## Technologies Used
 
-Angular CLI, Bootstrap, Firebase
+Qt, Google Test
 
 ### License
 
