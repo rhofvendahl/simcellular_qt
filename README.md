@@ -10,8 +10,7 @@ An implementation of Conway's Game of Life, a cellular automaton in which each s
 
 Original project live at http://simcellular.us.
 
-![simcellular_qt demo](resources/simcellular_qt.gif)
-
+![simcellular_qt demo](resources/simcellular_qt_reduced.gif)
 
 ## Setup/Installation
 
