@@ -8,22 +8,31 @@
 
 An implementation of Conway's Game of Life, a cellular automaton in which each state is determined by the state prior according to a few simple rules. Application built with Qt, coverage through Google Test.
 
-Original project live at http://simcellular.us
+Original project live at http://simcellular.us.
 
-## Setup/Installation Requirements
+![simcellular_qt demo](resources/simcellular_qt.gif)
 
-* install Qt5
-* ```
+
+## Setup/Installation
+
+First, clone repository and navigate to directory:
+```
 git clone https://github.com/rhofvendahl/simcellular_qt
 cd simcellular_qt
-qmake .
-cd simcellular_qt_build
-make
 ```
-OR:
-* install QtCreator
-* open simcellular_qt.pro file in creator
-* press run (bottom left)
+To run:
+```
+cd simcellular_qt_build
+./simcellular_qt
+```
+To test:
+```
+cd simcellular_googletest_build
+./simcellular_googlet
+```
+To develop:
+1. install Qt Creator with Qt5 ([guide](https://doc.qt.io/qt-5/gettingstarted.html here)).
+2. In Qt Creator select "file -> open file or project -> simcellular_qt.pro".
 
 ## Technologies Used
 
