@@ -44,6 +44,8 @@ private slots:
     void on_shape5_pressed(const QModelIndex &index = tempIndex);
     void on_shape6_pressed(const QModelIndex &index = tempIndex);
 
+    void on_about_linkActivated(const QString &link);
+
 private:
     static QModelIndex tempIndex;
     Ui::Widget *ui;

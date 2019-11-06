@@ -20,7 +20,7 @@
    <item row="4" column="1">
     <widget class="QLabel" name="about">
      <property name="text">
-      <string>about</string>
+      <string>&lt;a href=&quot;https://github.com/rhofvendahl/simcellular_qt&quot; style=&quot;text-decoration: none; color: #808080;&quot;&gt;about&lt;/a&gt;</string>
      </property>
     </widget>
    </item>

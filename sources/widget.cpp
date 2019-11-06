@@ -11,6 +11,8 @@
 #include <QTableWidgetItem>
 #include <QString>
 #include <QModelIndex>
+#include <QDesktopServices>
+#include <QUrl>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent), ui(new Ui::Widget) {
@@ -318,4 +320,10 @@ void Widget::renderShapes() {
            }
        }
    }
+}
+
+void Widget::on_about_linkActivated(const QString &link)
+{
+    QDesktopServices::openUrl(QUrl(link));
+    qDebug() << "about link activated";
 }
