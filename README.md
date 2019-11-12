@@ -1,6 +1,6 @@
 # simcellular_qt
 
-#### Angular 4 web application, Oct 2019
+#### Qt Desktop Application, Oct 2019
 
 #### By Russell Hofvendahl
 
